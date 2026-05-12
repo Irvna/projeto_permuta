@@ -1,6 +1,7 @@
 import {Schema, model} from 'mongoose';
 
 const PermutaSchema = new Schema({
+    //required é para garantir que o campo seja preenchido
     nome: {type: String, required: true},
     orgao: {type: String, required: true},
     cargo: {type: String, required: true},
