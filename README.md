@@ -51,10 +51,10 @@ Associação de cidade atual e cidade desejada
 ---
 
 # Rotas de API
-   POST -> responsável pelo cadastro
-   GET -> responsável por listar
-   PUT -> responsável por atualizar
-   DELETE -> responsável por deletar/apagar
+- POST -> responsável pelo cadastro
+- GET -> responsável por listar
+- PUT -> responsável por atualizar
+- DELETE -> responsável por deletar/apagar
 
 ---
 

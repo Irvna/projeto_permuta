@@ -1,11 +1,10 @@
 import {Schema, model} from 'mongoose';
 
 const ServidorSchema = new Schema({
-    nome: {type: String, required: true},
-    orgao: {type: String, required: true},
-    cargo: {type: String, required: true},
-    //cidadeAtual:{type: mongoose.Schema.Types.ObjectId, ref: "Cidade"}
-    //cidadeDesejada:{type: mongoose.Schema.Types.ObjectId, ref: "Cidade"}
+    servidor1: {type: moongoose.Schema.Types.Schema.Types.ObjectId, ref: "Servidor"},
+    servidor2: {type: moongoose.Schema.Types.Schema.Types.ObjectId, ref: "Servidor"},
+    status: {type: Boolean, default: false},
+    cidadeTroca:{type: mongoose.Schema.Types.ObjectId, ref: "Cidade"}
 });
 
 const Servidor = model('Servidores', ServidorSchema);
