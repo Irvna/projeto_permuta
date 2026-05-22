@@ -71,3 +71,4 @@ Associação de cidade atual e cidade desejada
 
 ## 4. Inicie o servidor
    node server.js
+   npm run dev
