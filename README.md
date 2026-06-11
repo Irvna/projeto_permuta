@@ -23,12 +23,14 @@ O projeto tem como objetivo facilitar o cadastro e consulta de pedidos de permut
 ## 1. Servidores
 Cadastrar servidor
 Listar servidores
+Buscar servidor por ID
 Atualizar servidor
 Excluir servidor
 
 ## 2. Permutas
 Criar pedido de permuta
 Listar permutas
+Buscar permuta por ID
 Atualizar permuta
 Excluir permuta
 
