@@ -1,6 +1,5 @@
 import { Router } from "express";
 import {buscarTodasPermutas, buscarPermutaID, criarPermuta, alterarPermuta, excluirPermuta} from "./../controls/permutas.js";
-import Permuta from "../models/permutas.js";
 
 const router = Router();
 

@@ -14,12 +14,12 @@ const criarCidade = async (req, res) => {
         //cse array, permite criar varias cidades de uma só vez [{},{},{}]
         if (Array.isArray(req.body)) {
             const cidades = await Cidade.insertMany(req.body);
-            return res.status(201).json({ error: "Cidades cadastradas com sucesso!" });
+            return res.status(201).json({ message: "Cidades cadastradas com sucesso!" });
         }
 
         const novaCidade = new Cidade(req.body);
         await novaCidade.save();
-        res.status(201).json({ error: "Cidade cadastrada com sucesso!" });
+        res.status(201).json({ message: "Cidade cadastrada com sucesso!" });
     } catch (error) {
         res.status(500).json({ error: "Erro ao criar cidade." });
     }

@@ -1,6 +1,5 @@
 import { Router } from "express";
 import {buscarTodosServidores, buscarServidorID, criarServidor, alterarServidor, excluirServidor} from "./../controls/servidores.js";
-import Servidor from "../models/servidores.js";
 
 const router = Router();
 
@@ -13,5 +12,4 @@ router.post('/servidores', criarServidor);
 router.put('/servidores/:id', alterarServidor);
 
 router.delete('/servidores/:id', excluirServidor);
-
 export default router;

@@ -1,7 +1,7 @@
-import express from "express"
-import routerServidores from "./rotas/servidores.js"
-import routerCidade from "./rotas/cidades.js"
-import routerPermuta from "./rotas/permutas.js"
+import express from "express";
+import routerServidores from "./routes/servidores.js";
+import routerCidade from "./routes/cidades.js";
+import routerPermuta from "./routes/permutas.js";
 
 import "./connection.js"
 
@@ -9,9 +9,9 @@ const app = express();
 app.use(express.json());
 
 //Rotas
-app.use("/servidores", routerServidores);
-app.use("/cidades", routerCidade);
-app.use("/permutas", routerPermuta);
+app.use("/", routerServidores);
+app.use("/", routerCidade);
+app.use("/", routerPermuta);
 
 //Servidor vai rodar na porta 3000
 app.listen(3000, ()=> {
