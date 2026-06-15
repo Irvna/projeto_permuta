@@ -1,7 +1,7 @@
-import express from "express"
-import routerServidores from "./rotas/servidores.js"
-import routerCidade from "./rotas/cidades.js"
-import routerPermuta from "./rotas/permutas.js"
+import express from "express";
+import routerServidores from "./routes/servidores.js";
+import routerCidade from "./routes/cidades.js";
+import routerPermuta from "./routes/permutas.js";
 
 import "./connection.js"
 
