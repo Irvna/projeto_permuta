@@ -5,7 +5,7 @@ Sistema desenvolvido para **gerenciamento de pedidos de permuta entre servidores
 ---
 # Desenvolvedoras
 
-Esse sistema foi desenvolvimento afim de averiguar os conhecimentos sobre a matéria de **Tópicos Espesiais de Sistemas de Informação (TESI)**, *especialmente sobre a prática do CRUD, do 4º do curso de Sistema de Informação da Universidade Estadual de Mato Grosso do Sul (UEMS) - campus Dourados, ministrada pelo Prof. Jeferson*.
+Esse sistema foi desenvolvimento afim de averiguar os conhecimentos sobre a matéria de **Tópicos Espesiais de Sistemas de Informação (TESI)**, *especialmente sobre a prática do CRUD, do 4º ano do curso de Sistemas de Informação da Universidade Estadual de Mato Grosso do Sul (UEMS) - campus Dourados, ministrada pelo Prof. Jeferson*.
 Sendo **desenvolvido pelas alunas**:
    - Amanda Salvino da Costa - rgm49900
    - Irvna Maria Costa Soares - rgm49115
@@ -66,10 +66,10 @@ Associação de cidade atual e cidade desejada
    git clone https://github.com/Irvna/projeto_permuta.git
 
 ## 2. Acesse a pasta do projeto
-   cd projeto-permuta
+   cd projeto_permuta
 
 ## 3. Instale as dependências
-   npm install express mongoose3
+   npm install express mongoose
 
 ## 4. Inicie o servidor
    node server.js
