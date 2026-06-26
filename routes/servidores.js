@@ -1,13 +1,15 @@
 import { Router } from "express";
-import {buscarTodosServidores, buscarServidorID, criarServidor, alterarServidor, excluirServidor} from "./../controls/servidores.js";
+import {criarServidor, loginServidor, buscarTodosServidores, buscarServidorID, alterarServidor, excluirServidor} from "./../controls/servidores.js";
 
 const router = Router();
+
+router.post('/servidores', criarServidor);
+
+router.post("/servidores/login", loginServidor);
 
 router.get("/servidores", buscarTodosServidores);
 
 router.get("/servidores/:id", buscarServidorID);
-
-router.post('/servidores', criarServidor);
 
 router.put('/servidores/:id', alterarServidor);
 

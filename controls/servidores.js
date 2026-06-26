@@ -1,4 +1,52 @@
 import Servidor from "./../models/servidores.js";
+import jwt from "jsonwebtoken"
+
+const SENHAJWT = "senhaTeste";
+
+const criarServidor = async (req, res) => {
+    const novaServidor = new Servidor(req.body)
+    await novaServidor.save()
+    res.status(201).json(
+        {
+            "erro": false,
+            "mensagem": "Servidor salvo com sucesso!"
+        }
+    )
+};
+
+const loginServidor = async (req, res) => {
+    const { email, senha } = req.body;
+
+    const usuarioTeste = {
+        id: 1,
+        nome: "Larissa",
+        orgao: "Faculdade de Educação",
+        cargo: "Professora",
+        email: "teste",
+        senha: "123"
+    }
+
+    //caso o email ou senha informada não seja igual a senha do servidor
+    if (!email || !senha) {
+        return res.status(401).json({
+            erro: true,
+            mensagem: "Email ou senha inválidos."
+        });
+    }
+
+    //caso o email e senha informada seja igual a senha do servidor
+    if (email == usuarioTeste.email && senha == usuarioTeste.senha) {
+        const token = jwt.sign({ id: usuarioTeste.id, nome: "Arlindo" }, SENHAJWT, { expiresIn: '1h' })
+
+        return res.status(200).json({
+            "erro": false,
+            "mensagem": "Usuários logado com sucesso",
+            "token": token
+        })
+    }
+
+    res.status(400).json({ "erro": true, "mensagem": "Email e senha inválidos" })
+}
 
 const buscarTodosServidores = async (req, res) => {
     try {
@@ -22,18 +70,6 @@ const buscarServidorID = async (req, res) => {
     }
 }
 
-const criarServidor = async (req, res) => {
-
-    const novaServidor = new Servidor(req.body)
-    await novaServidor.save()
-    res.status(201).json(
-        {
-            "erro": false,
-            "mensagem": "Servidor salvo com sucesso!"
-        }
-    )
-};
-
 const alterarServidor = async (req, res) => {
     try {
         const { id } = req.params;
@@ -54,7 +90,7 @@ const excluirServidor = async (req, res) => {
         const { id } = req.params;
         const servidorDeletada = await Servidor.findByIdAndDelete(id)
 
-        if (!servidorDeletada){
+        if (!servidorDeletada) {
             return res.status(404).json({ error: "Servidor não encontrada." })
         }
 
@@ -64,4 +100,4 @@ const excluirServidor = async (req, res) => {
     }
 };
 
-export {buscarTodosServidores, buscarServidorID, criarServidor, alterarServidor, excluirServidor};
+export { criarServidor, loginServidor, buscarTodosServidores, buscarServidorID, alterarServidor, excluirServidor };
