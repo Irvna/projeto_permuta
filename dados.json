@@ -1,13 +1,5 @@
-//ESSE ARQUIVO SERVIRÁ DE BASE E AUXILIO PARA O TESTE DO CÓDIGO
-//FORNECE DADOS EM JSON DE EXEMPLO PARA TESTES DE CRIAÇÃO, LEITURA, ATUALIZAÇÃO E EXCLUSÃO
-// DOS MODELOS CRIADOS: CIDADES, SERVIDORES E PERMUTAS
-
-// ======================================================
-// CIDADES
-// ======================================================
-
-// CREATE
-[
+{
+  "cidades":[
     {
       "nomeCidade": "Dourados",
       "estado": "Mato Grosso do Sul"
@@ -43,39 +35,13 @@
     {
       "nomeCidade": "Brasília",
       "estado": "Distrito Federal"
-    }
-]
-
-
-// READ / leitura de dados
-    // GET /cidades
-    // GET /cidades/:id
-    
-
-// UPDATE DE EXEMPLO / atualização de dados
-    // envia a requisição: PUT /cidades/:id
-    //depois da requisição deve ser enviado o seguinte JSON no corpo da requisição para atualizar a cidade:
+    },
     {
         "nomeCidade": "Aparecida do Taboado",
         "estado": "Mato Grosso do Sul"
-    };
-
-
-// DELETE - deletando uma cidade
-    // DELETE/cidades/:id
-
-
-
-// ======================================================
-// SERVIDORES
-// ======================================================
-
-// OBS: Substitua os IDs abaixo pelos IDs reais
-// das cidades cadastradas no banco.
-
-
-// CREATE
-[
+    }
+  ],
+  "servidores": [
     {
       "nome": "João Carlos Silva",
       "orgao": "Prefeitura Municipal de Dourados",
@@ -146,43 +112,8 @@
       "email": "rgm49115@comp.uems.br",
       "senha": "202020"
     }
-]
-
-
-// READ
-    // GET /servidores
-    // GET /servidores/:id
-
-
-// UPDATE
-    // envia a requisição: PUT /servidores/:id
-    //depois da requisição deve ser enviado o seguinte JSON no corpo da requisição para atualizar a cidade:
-    {
-        "cargo": "Coordenador Pedagógico",
-        "orgao": "Secretaria Estadual de Educação"
-    }
-
-
-// DELETE
-    // DELETE /servidores/:id
-
-
-// LOGIN
-    //acesse: POST /servidores/login
-    //como o loginServidor ja envia um cadastro teste, podemos testar com ele
-    //no body coloque:
-    {
-      "email": "teste",
-      "senha": "123"
-    }
-
-
-// ======================================================
-// PERMUTAS
-// ======================================================
-
-//CREATE
-[
+  ],
+  "permutas": [
     {
       "status": false
     },
@@ -192,12 +123,11 @@
     {
       "status": false
     }
-]
-
-
-// UPDATE
-    // PUT /permutas/:id
-
-
-// DELETE
-    // DELETE /permutas/:id
+  ],
+  "login": [
+    {
+      "email": "teste",
+      "senha": "123"
+    }
+  ]
+}
