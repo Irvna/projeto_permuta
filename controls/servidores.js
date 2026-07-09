@@ -1,11 +1,32 @@
 import Servidor from "./../models/servidores.js";
 import jwt from "jsonwebtoken"
+import bcrypt from "bcrypt"
 
 const SENHAJWT = "senhaTeste";
+const RANDOM_PASSWORD = 12;
 
 const criarServidor = async (req, res) => {
-    const novaServidor = new Servidor(req.body)
-    await novaServidor.save()
+    if (!req.body.email || !req.body.senha) {
+        return res.status(400).json({
+            "erro": true,
+            "mensagem": "Email e senha são obrigatórios."
+        })
+    }
+
+    const servidoresExistentes = await Servidor.findOne({ email: req.body.email })
+
+    if (servidoresExistentes) {
+        return res.status(400).json({
+            "erro": true,
+            "mensagem": "Email já cadastrado."
+        })
+    }
+
+    const senhaCriptografada = await bcrypt.hash(req.body.senha, RANDOM_PASSWORD)
+    const novoServidor = new Servidor({ ...req.body, senha: senhaCriptografada })
+
+    await novoServidor.save()
+
     res.status(201).json(
         {
             "erro": false,
@@ -19,33 +40,47 @@ const loginServidor = async (req, res) => {
 
     const usuarioTeste = {
         id: 1,
-        nome: "Larissa",
+        nome: "Usuário Teste",
         orgao: "Faculdade de Educação",
-        cargo: "Professora",
+        cargo: "Professor",
         email: "teste",
         senha: "123"
     }
 
     //caso o email ou senha informada não seja igual a senha do servidor
     if (!email || !senha) {
-        return res.status(401).json({
+        return res.status(400).json({
+            erro: true,
+            mensagem: "Email ou senha inválidos."
+        });
+    }
+
+    const usuario = await Servidor.findOne({ email });
+
+    if (!usuario) {
+        return res.status(400).json({
+            erro: true,
+            mensagem: "Email ou senha inválidos."
+        });
+    }
+
+    const senhaValida = await bcrypt.compare(senha, usuario.senha);
+
+    if (!senhaValida) {
+        return res.status(400).json({
             erro: true,
             mensagem: "Email ou senha inválidos."
         });
     }
 
     //caso o email e senha informada seja igual a senha do servidor
-    if (email == usuarioTeste.email && senha == usuarioTeste.senha) {
-        const token = jwt.sign({ id: usuarioTeste.id, nome: "Arlindo" }, SENHAJWT, { expiresIn: '1h' })
+    const token = jwt.sign({ id: usuario._id, nome: usuario.nome }, SENHAJWT, { expiresIn: '1h' })
 
-        return res.status(200).json({
-            "erro": false,
-            "mensagem": "Usuários logado com sucesso",
-            "token": token
-        })
-    }
-
-    res.status(400).json({ "erro": true, "mensagem": "Email e senha inválidos" })
+    return res.status(200).json({
+        "erro": false,
+        "mensagem": "Usuários logado com sucesso",
+        "token": token
+    })
 }
 
 const buscarTodosServidores = async (req, res) => {
@@ -94,7 +129,7 @@ const excluirServidor = async (req, res) => {
             return res.status(404).json({ error: "Servidor não encontrada." })
         }
 
-        res.status(200).json({ message: "Servidor deletada com sucesso!" })
+        res.status(200).json({ message: "Servidor deletado com sucesso!" })
     } catch (error) {
         res.status(500).json({ error: "Erro ao deletar servidor." })
     }
