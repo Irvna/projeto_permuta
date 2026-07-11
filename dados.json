@@ -112,22 +112,5 @@
       "email": "rgm49115@comp.uems.br",
       "senha": "202020"
     }
-  ],
-  "permutas": [
-    {
-      "status": false
-    },
-    {
-      "status": true
-    },
-    {
-      "status": false
-    }
-  ],
-  "login": [
-    {
-      "email": "teste",
-      "senha": "123"
-    }
   ]
 }
