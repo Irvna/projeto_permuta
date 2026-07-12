@@ -1,9 +1,25 @@
 import Cidade from "./../models/cidades.js";
 
+const criarCidade = async (req, res) => {
+    try {
+        //cse array, permite criar varias cidades de uma só vez [{},{},{}]
+        if (Array.isArray(req.body)) {
+            const cidades = await Cidade.insertMany(req.body);
+            return res.status(201).json({ message: "Cidades cadastradas com sucesso!" });
+        }
+
+        const novaCidade = new Cidade(req.body);
+        await novaCidade.save();
+        res.status(201).json({ message: "Cidade cadastrada com sucesso!" });
+    } catch (error) {
+        res.status(500).json({ error: "Erro ao criar cidade." });
+    }
+};
+
 const buscarTodasCidades = async (req, res) => {
     try {
         const cidades = await Cidade.find();
-        res.status(201).json(cidades);
+        res.status(200).json(cidades);
     } catch (error) {
         res.status(500).json({ error: "Erro ao buscar cidades." });
     }
@@ -21,22 +37,6 @@ const buscarCidadeID = async (req, res) => {
         res.status(200).json(cidade);
     } catch (error) {
         res.status(500).json({ error: "Erro ao buscar cidade." });
-    }
-};
-
-const criarCidade = async (req, res) => {
-    try {
-        //cse array, permite criar varias cidades de uma só vez [{},{},{}]
-        if (Array.isArray(req.body)) {
-            const cidades = await Cidade.insertMany(req.body);
-            return res.status(201).json({ message: "Cidades cadastradas com sucesso!" });
-        }
-
-        const novaCidade = new Cidade(req.body);
-        await novaCidade.save();
-        res.status(201).json({ message: "Cidade cadastrada com sucesso!" });
-    } catch (error) {
-        res.status(500).json({ error: "Erro ao criar cidade." });
     }
 };
 
@@ -71,4 +71,4 @@ const excluirCidade = async (req, res) => {
     }
 };
 
-export { buscarTodasCidades, criarCidade, alterarCidade, excluirCidade };
+export { criarCidade, buscarTodasCidades, buscarCidadeID, alterarCidade, excluirCidade };

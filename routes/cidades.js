@@ -1,11 +1,13 @@
 import { Router } from "express";
-import { buscarTodasCidades, criarCidade, alterarCidade, excluirCidade } from "./../controls/cidades.js";
+import { criarCidade, buscarTodasCidades, buscarCidadeID, alterarCidade, excluirCidade } from "./../controls/cidades.js";
 
 const router = Router();
 
+router.post('/cidades', criarCidade);
+
 router.get('/cidades', buscarTodasCidades);
 
-router.post('/cidades', criarCidade);
+router.get('/cidades/:id', buscarCidadeID);
 
 router.put('/cidades/:id', alterarCidade);
 
