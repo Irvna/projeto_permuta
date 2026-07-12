@@ -1,14 +1,16 @@
 import { Router } from "express";
-import { buscarTodasPermutas, buscarPermutaID, criarPermuta, alterarPermuta, excluirPermuta } from "./../controls/permutas.js";
+import { criarPermuta, buscarTodasPermutas, buscarPermutasUsuario, buscarPermutaID, alterarPermuta, excluirPermuta } from "./../controls/permutas.js";
 import verificarToken from "../middleware/verificarToken.js";
 
 const router = Router();
 
+router.post('/permutas', verificarToken, criarPermuta);
+
 router.get('/permutas', buscarTodasPermutas);
 
-router.get('/permutas/:id', buscarPermutaID);
+router.get('/permutas/usuario', verificarToken, buscarPermutasUsuario);
 
-router.post('/permutas', verificarToken, criarPermuta);
+router.get('/permutas/:id', buscarPermutaID);
 
 router.put('/permutas/:id', alterarPermuta);
 

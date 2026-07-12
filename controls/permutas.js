@@ -1,31 +1,6 @@
 import Permuta from "./../models/permutas.js";
 import verificarToken from "../middleware/verificarToken.js";
 
-const buscarTodasPermutas = async (req, res) => {
-    try {
-        const permutas = await Permuta.find();
-
-        res.status(201).json(permutas);
-    } catch (error) {
-        res.status(500).json({ error: "Erro ao buscar permutas." });
-    }
-};
-
-const buscarPermutaID = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const permuta = await Permuta.findById(id);
-
-        if (!permuta) {
-            return res.status(404).json("Permuta não encontrada.");
-        }
-
-        res.status(201).json(permuta);
-    } catch (error) {
-        res.status(500).json({ error: "Erro ao buscar permuta." });
-    }
-}
-
 const criarPermuta = async (req, res) => {
     try {
         const servidor1 = req.usuario.id;
@@ -52,6 +27,45 @@ const criarPermuta = async (req, res) => {
                 "mensagem": "Erro ao criar permuta."
             }
        );
+    }
+};
+
+const buscarTodasPermutas = async (req, res) => {
+    try {
+        const permutas = await Permuta.find();
+
+        res.status(200).json(permutas);
+    } catch (error) {
+        res.status(500).json({ error: "Erro ao buscar permutas." });
+    }
+};
+
+const buscarPermutasUsuario = async (req, res) => {
+    try {
+        const usuario = req.usuario.id;
+        const permutas = await Permuta.find({ servidor1: usuario });
+
+        res.status(200).json(permutas);
+    } catch (error) {
+        res.status(500).json({
+            "erro": true,
+            "mensagem": "Erro ao buscar permutas."
+        });
+    }
+};
+
+const buscarPermutaID = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const permuta = await Permuta.findById(id);
+
+        if (!permuta) {
+            return res.status(404).json("Permuta não encontrada.");
+        }
+
+        res.status(200).json(permuta);
+    } catch (error) {
+        res.status(500).json({ error: "Erro ao buscar permuta." });
     }
 };
 
@@ -86,4 +100,4 @@ const excluirPermuta = async (req, res) => {
     }
 };
 
-export { buscarTodasPermutas, buscarPermutaID, criarPermuta, alterarPermuta, excluirPermuta };
+export { criarPermuta, buscarTodasPermutas, buscarPermutasUsuario, buscarPermutaID, alterarPermuta, excluirPermuta };
