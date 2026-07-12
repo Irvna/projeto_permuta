@@ -80,17 +80,17 @@ const loginServidor = async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: "Erro ao efetuar o login." });
     }
-}
+};
 
 const buscarTodosServidores = async (req, res) => {
     try {
         const servidores = await Servidor.find();
 
-        res.status(201).json(servidores);
+        res.status(200).json(servidores);
     } catch (error) {
         res.status(500).json({ error: "Erro ao buscar servidores." });
     }
-}
+};
 
 const buscarServidorID = async (req, res) => {
     try {
@@ -101,11 +101,11 @@ const buscarServidorID = async (req, res) => {
             return res.status(404).json("Servidor não encontrado.");
         }
 
-        res.status(201).json(servidores);
+        res.status(200).json(servidores);
     } catch (error) {
         res.status(500).json({ error: "Erro ao buscar servidor." });
     }
-}
+};
 
 const alterarServidor = async (req, res) => {
     try {
