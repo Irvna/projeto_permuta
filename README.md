@@ -47,6 +47,7 @@ Associação de cidade atual e cidade desejada
 - Node.js
 - Express
 - JSON Web Tokens (JWT)
+- Bcrypt
 - MongoDB
 - Mongoose
 - Insomnia
@@ -63,16 +64,23 @@ Associação de cidade atual e cidade desejada
 
 # Instalação
 
-## 1. Clone o repositório
+## 1. Configurando o Banco
+   Inicialize o MongoDB, crie uma conexão chamada "permutacao", no localhost/27017.
+
+## 2. Clone o repositório
    git clone https://github.com/Irvna/projeto_permuta.git
 
-## 2. Acesse a pasta do projeto
+## 3. Acesse a pasta do projeto
    cd projeto_permuta
 
-## 3. Instale as dependências
-   npm install express mongoose jsonwebtoken
+## 4. Instale as dependências
+   npm install express mongoose jsonwebtoken bcrypt dotenv
 
-## 4. Inicie o servidor
-   node server.js
-   
-   npm run dev
+## 5. Inicie o servidor
+   No terminal inicialize o servidor utilizando:
+      node server.js
+   ou
+      npm run dev
+
+## 6. Testes
+   Os testes podem ser realizados pelo Insomnia ao acessar http://localhost:3000

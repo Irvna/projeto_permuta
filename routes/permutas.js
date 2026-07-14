@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { criarPermuta, buscarTodasPermutas, buscarPermutasUsuario, buscarPermutaID, alterarPermuta, excluirPermuta } from "./../controls/permutas.js";
+import { criarPermuta, buscarTodasPermutas, buscarPermutasUsuario, buscarPermutaID, alterarPermuta, excluirPermuta } from "./../controllers/permutas.js";
 import verificarToken from "../middleware/verificarToken.js";
 
 const router = Router();
