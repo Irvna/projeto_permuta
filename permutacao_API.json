@@ -1,0 +1,500 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: permutacao_API
+meta:
+  id: wrk_e02ab4b3c7304d7693b39f48996b3639
+  created: 1781217500148
+  modified: 1784070194490
+  description: ""
+collection:
+  - name: permutas
+    meta:
+      id: fld_0ca276e57795454c8a155dbbcc058755
+      created: 1784067771120
+      modified: 1784069217132
+      sortKey: -1784067771120
+      description: ""
+    children:
+      - url: localhost:3000/permutas/{id}
+        name: Permuta por ID
+        meta:
+          id: req_7aaa975afe704d07baaee932afb620f5
+          created: 1784069263924
+          modified: 1784069392798
+          isPrivate: false
+          description: ""
+          sortKey: -1784069263924
+        method: GET
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/permutas
+        name: Todas as permutas
+        meta:
+          id: req_5ed31220ba564566b200f9fd8a2168a6
+          created: 1784069267426
+          modified: 1784069338425
+          isPrivate: false
+          description: ""
+          sortKey: -1784069267426
+        method: GET
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/permutas/{id}
+        name: Editar Permuta
+        meta:
+          id: req_153bbc04ed8c4684930c2949324300bf
+          created: 1784069351022
+          modified: 1784070138643
+          isPrivate: false
+          description: ""
+          sortKey: -1784069351022
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+                "status": "aceita"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/permutas/{id}
+        name: Excluir Permuta
+        meta:
+          id: req_0857830437374e72a28713a5733e66e0
+          created: 1784069367249
+          modified: 1784069404621
+          isPrivate: false
+          description: ""
+          sortKey: -1784069367249
+        method: DELETE
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/permutas
+        name: Cadastrar Permuta
+        meta:
+          id: req_4caec9e14c784ce28e05764d101756a8
+          created: 1784069569605
+          modified: 1784069924305
+          isPrivate: false
+          description: ""
+          sortKey: -1784069569605
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"servidor2" : "6a56bac3d786502c3e885318",
+            	"cidadeTroca" : "6a56b858514407655737d26b"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        authentication:
+          type: bearer
+          token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhNTZiYWMzZDc4NjUwMmMzZTg4NTMxOCIsIm5vbWUiOiJGYWJyaWNpbyBkZSBTb3V6YSIsImlhdCI6MTc4NDA2OTg3MCwiZXhwIjoxNzg0MDczNDcwfQ.4nRfzSt2y9nILBD9gmlt2znDAo5JauPb_g4Yb9xl2xc
+          prefix: ""
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: servidores
+    meta:
+      id: fld_0627f30f28e346b68a4cdd044edd34a0
+      created: 1784067829027
+      modified: 1784067829027
+      sortKey: -1784067829027
+      description: ""
+    children:
+      - url: localhost:3000/servidores
+        name: Todos os Servidores
+        meta:
+          id: req_93ee6d3f38d94f50845ee611c5e5e84a
+          created: 1784068624531
+          modified: 1784068720064
+          isPrivate: false
+          description: ""
+          sortKey: -1784068624531
+        method: GET
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/servidores/{id}
+        name: Servidor por ID
+        meta:
+          id: req_bbf1dd06aeb74cbba7c7a7d855f3cb9d
+          created: 1784068655743
+          modified: 1784068910446
+          isPrivate: false
+          description: ""
+          sortKey: -1784068655743
+        method: GET
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/servidores
+        name: Cadastrar Servidor
+        meta:
+          id: req_ef377fa0c0e648158aa1014563a6f22c
+          created: 1784068694611
+          modified: 1784069545274
+          isPrivate: false
+          description: ""
+          sortKey: -1784068694611
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+                  "nome": "João Carlos Silva",
+                  "orgao": "Prefeitura Municipal de Dourados",
+                  "cargo": "Professor",
+                  "email": "joao.silva@prefeitura.ms.gov.br",
+                  "senha": "123456"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/servidores/{id}
+        name: Atualizar Servidor
+        meta:
+          id: req_5dbb8572d79b45199cba30204958713c
+          created: 1784068865928
+          modified: 1784068999797
+          isPrivate: false
+          description: ""
+          sortKey: -1784068865928
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome": "Fabricio de Souza"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/servidores/{id}
+        name: Deletar Servidor
+        meta:
+          id: req_7b15e2ea8191448db27680b2fda3a793
+          created: 1784068976256
+          modified: 1784069137166
+          isPrivate: false
+          description: ""
+          sortKey: -1784068976256
+        method: DELETE
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/servidores/login
+        name: Login Servidor
+        meta:
+          id: req_3e8bca77afe14062961543a06e6ababe
+          created: 1784069056753
+          modified: 1784069181954
+          isPrivate: false
+          description: ""
+          sortKey: -1784069056753
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"email": "joao.silva@prefeitura.ms.gov.br",
+              "senha": "123456"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: cidades
+    meta:
+      id: fld_f1b766742eb84941b7fe5e9654cee808
+      created: 1784067851152
+      modified: 1784068494784
+      sortKey: -1784067851152
+      description: ""
+    children:
+      - url: localhost:3000/cidades
+        name: Todas as Cidades
+        meta:
+          id: req_20d960ae61ac4ac1810e7f164bf5f970
+          created: 1784067932337
+          modified: 1784068728675
+          isPrivate: false
+          description: ""
+          sortKey: -1784067932337
+        method: GET
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/cidades/{id}
+        name: Cidade por ID
+        meta:
+          id: req_c17b2a7da76745ba8596c8f64a7f341b
+          created: 1784067980411
+          modified: 1784068725461
+          isPrivate: false
+          description: ""
+          sortKey: -1784067980411
+        method: GET
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/cidades
+        name: Cadastrar cidade
+        meta:
+          id: req_10d589ec2d3d4086856ced04a8fe17bc
+          created: 1784068006035
+          modified: 1784068183009
+          isPrivate: false
+          description: ""
+          sortKey: -1784068006035
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            [
+                {
+                  "nomeCidade": "Dourados",
+                  "estado": "Mato Grosso do Sul"
+                },
+                {
+                  "nomeCidade": "Campo Grande",
+                  "estado": "Mato Grosso do Sul"
+                },
+                {
+                  "nomeCidade": "Ponta Porã",
+                  "estado": "Mato Grosso do Sul"
+                },
+                {
+                  "nomeCidade": "Três Lagoas",
+                  "estado": "Mato Grosso do Sul"
+                },
+                {
+                  "nomeCidade": "Corumbá",
+                  "estado": "Mato Grosso do Sul"
+                },
+                {
+                  "nomeCidade": "Cuiabá",
+                  "estado": "Mato Grosso"
+                },
+                {
+                  "nomeCidade": "Rondonópolis",
+                  "estado": "Mato Grosso"
+                },
+                {
+                  "nomeCidade": "Goiânia",
+                  "estado": "Goiás"
+                },
+                {
+                  "nomeCidade": "Brasília",
+                  "estado": "Distrito Federal"
+                },
+                {
+                    "nomeCidade": "Aparecida do Taboado",
+                    "estado": "Mato Grosso do Sul"
+                }
+              ]
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/cidades/{id}
+        name: Atualizar Cidade
+        meta:
+          id: req_0e6ed057106d44598fda46b8440d8245
+          created: 1784068214396
+          modified: 1784068411932
+          isPrivate: false
+          description: ""
+          sortKey: -1784068214396
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nomeCidade": "Ivinhema"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/cidades/{id}
+        name: Excluir Cidade
+        meta:
+          id: req_d834c80324424bd0ade5a53bd0ef9999
+          created: 1784068453403
+          modified: 1784068733864
+          isPrivate: false
+          description: ""
+          sortKey: -1784068453403
+        method: GET
+        body:
+          mimeType: application/json
+          text: ""
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_a086078f3ee5aecb77bc244c6d99d548823fe210
+    created: 1781217500152
+    modified: 1781217500152
+environments:
+  name: Base Environment
+  meta:
+    id: env_a086078f3ee5aecb77bc244c6d99d548823fe210
+    created: 1781217500150
+    modified: 1781217500150
+    isPrivate: false

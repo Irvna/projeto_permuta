@@ -288,6 +288,32 @@ http://localhost:3000/permutas/{id}
 
 ---
 
+### Coleção de Requisições
+
+Para facilitar os testes da aplicação, o projeto disponibiliza na raiz do repositório o arquivo:
+
+   ```text
+   permutacao_API.json
+   ```
+
+Esse arquivo corresponde à coleção de requisições do **Insomnia**, contendo todas as rotas da API já configuradas, incluindo os métodos **GET**, **POST**, **PUT** e **DELETE** para os recursos **Servidores**, **Cidades** e **Permutas**.
+
+#### Como importar a coleção
+
+1. Abra o **Insomnia**.
+2. Clique em **Create** → **Import**.
+3. Selecione a opção **From File**.
+4. Escolha o arquivo `permutacao_API.json` localizado na raiz do projeto.
+5. Após a importação, todas as requisições estarão disponíveis e prontas para uso.
+
+> **Observação:** 
+   Antes de realizar os testes, certifique-se de que o servidor da aplicação esteja em execução e que o banco de dados MongoDB esteja conectado corretamente. 
+   Além disso, algumas requisições necessitam de um "id" no final da sua URL, sendo informado com "{id}", modifique este campo para o "id" desejado, que pode ser visto na pesquisa de todos (ex.: todas as cidades).
+   Para cadastro de permutas é necessário fazer login e salvar o código Token, ao ir em cadastrar permuta em "Auth" coloque o Token do usuário, e depois informe o segundo servidor e a cidade pelo ID.
+   Os servidores devem ser cadastrados 1 a 1, no arquivo "dados.json" possui mais usuários pré-prontos.
+
+---
+
 ## 8. Encerrar a aplicação
 
 Para interromper a execução do servidor, pressione:
