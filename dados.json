@@ -1,0 +1,116 @@
+{
+  "cidades":[
+    {
+      "nomeCidade": "Dourados",
+      "estado": "Mato Grosso do Sul"
+    },
+    {
+      "nomeCidade": "Campo Grande",
+      "estado": "Mato Grosso do Sul"
+    },
+    {
+      "nomeCidade": "Ponta Porã",
+      "estado": "Mato Grosso do Sul"
+    },
+    {
+      "nomeCidade": "Três Lagoas",
+      "estado": "Mato Grosso do Sul"
+    },
+    {
+      "nomeCidade": "Corumbá",
+      "estado": "Mato Grosso do Sul"
+    },
+    {
+      "nomeCidade": "Cuiabá",
+      "estado": "Mato Grosso"
+    },
+    {
+      "nomeCidade": "Rondonópolis",
+      "estado": "Mato Grosso"
+    },
+    {
+      "nomeCidade": "Goiânia",
+      "estado": "Goiás"
+    },
+    {
+      "nomeCidade": "Brasília",
+      "estado": "Distrito Federal"
+    },
+    {
+        "nomeCidade": "Aparecida do Taboado",
+        "estado": "Mato Grosso do Sul"
+    }
+  ],
+  "servidores": [
+    {
+      "nome": "João Carlos Silva",
+      "orgao": "Prefeitura Municipal de Dourados",
+      "cargo": "Professor",
+      "email": "joao.silva@prefeitura.ms.gov.br",
+      "senha": "123456"
+    },
+    {
+      "nome": "Maria Aparecida Souza",
+      "orgao": "Secretaria Estadual de Educação",
+      "cargo": "Coordenadora Pedagógica",
+      "email": "maria.souza@sed.ms.gov.br",
+      "senha": "123456"
+    },
+    {
+      "nome": "Pedro Henrique Oliveira",
+      "orgao": "Tribunal de Justiça de Mato Grosso do Sul",
+      "cargo": "Analista Judiciário",
+      "email": "pedro.oliveira@tjms.jus.br",
+      "senha": "123456"
+    },
+    {
+      "nome": "Fernanda Cristina Lima",
+      "orgao": "Universidade Estadual de Mato Grosso do Sul",
+      "cargo": "Técnica Administrativa",
+      "email": "fernanda.lima@uems.br",
+      "senha": "123456"
+    },
+    {
+      "nome": "Carlos Eduardo Santos",
+      "orgao": "Secretaria Municipal de Saúde",
+      "cargo": "Enfermeiro",
+      "email": "carlos.santos@saude.ms.gov.br",
+      "senha": "123456"
+    },
+    {
+      "nome": "Juliana Martins Ferreira",
+      "orgao": "Instituto Federal de Mato Grosso do Sul",
+      "cargo": "Professora",
+      "email": "juliana.ferreira@ifms.edu.br",
+      "senha": "123456"
+    },
+    {
+      "nome": "Ricardo Alves Pereira",
+      "orgao": "Ministério Público Estadual",
+      "cargo": "Analista Administrativo",
+      "email": "ricardo.pereira@mpe.ms.gov.br",
+      "senha": "565656"
+    },
+    {
+      "nome": "Patrícia Gomes Rocha",
+      "orgao": "Secretaria Estadual de Fazenda",
+      "cargo": "Auditora Fiscal",
+      "email": "patricia.rocha@sefaz.ms.gov.br",
+      "senha": "121212"
+    },
+    {
+      "nome": "Amanda Salvino da Costa",
+      "orgao": "Caristeo",
+      "cargo": "Estagiária",
+      "email": "rgm49900@comp.uems.br",
+      "senha": "252525"
+    },
+    {
+      "nome": "Irvna Maria Costa Soares",
+      "orgao": "Prefeitura Municipal de Dourados",
+      "cargo": "Estagiária",
+      "email": "rgm49115@comp.uems.br",
+      "senha": "202020"
+    }
+  ]
+}

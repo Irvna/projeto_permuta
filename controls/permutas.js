@@ -1,67 +1,103 @@
 import Permuta from "./../models/permutas.js";
+import verificarToken from "../middleware/verificarToken.js";
+
+const criarPermuta = async (req, res) => {
+    try {
+        const servidor1 = req.usuario.id;
+        const { servidor2, cidadeTroca } = req.body;
+
+        const novaPermuta = new Permuta({
+            servidor1,
+            servidor2,
+            cidadeTroca
+        });
+
+        await novaPermuta.save();
+        
+        res.status(201).json(
+            {
+                "erro": false,
+                "mensagem": "Permuta criada com sucesso!"
+            }
+        );
+    } catch (error) {
+       res.status(500).json(
+            {
+                "erro": true,
+                "mensagem": "Erro ao criar permuta."
+            }
+       );
+    }
+};
 
 const buscarTodasPermutas = async (req, res) => {
     try {
-        const permutas = await Permuta.find()
-        res.status(201).json(permutas)
+        const permutas = await Permuta.find();
+
+        res.status(200).json(permutas);
     } catch (error) {
-        res.status(500).json({ error: "Erro ao buscar permutas." })
+        res.status(500).json({ error: "Erro ao buscar permutas." });
+    }
+};
+
+const buscarPermutasUsuario = async (req, res) => {
+    try {
+        const usuario = req.usuario.id;
+        const permutas = await Permuta.find({ servidor1: usuario });
+
+        res.status(200).json(permutas);
+    } catch (error) {
+        res.status(500).json({
+            "erro": true,
+            "mensagem": "Erro ao buscar permutas."
+        });
     }
 };
 
 const buscarPermutaID = async (req, res) => {
     try {
-        const { id } = req.params
-        const permutas = await Permuta.findById(id)
-        if (!permutas) {
-            res.status(200).json("Permuta não encontrado.")
+        const { id } = req.params;
+        const permuta = await Permuta.findById(id);
+
+        if (!permuta) {
+            return res.status(404).json("Permuta não encontrada.");
         }
-        res.status(201).json(permutas)
+
+        res.status(200).json(permuta);
     } catch (error) {
-        res.status(500).json({ error: "Erro ao buscar permuta." })
+        res.status(500).json({ error: "Erro ao buscar permuta." });
     }
-}
-
-const criarPermuta = async (req, res) => {
-
-    const novaPermuta = new Permuta(req.body)
-    await novaPermuta.save()
-    res.status(201).json(
-        {
-            "erro": false,
-            "mensagem": "Permuta criado com sucesso!"
-        }
-    )
 };
 
 const alterarPermuta = async (req, res) => {
     try {
         const { id } = req.params;
         const body = req.body;
-        const permutaAtualizada = await Permuta.findByIdAndUpdate(id, body, { new: true })
+        const permutaAtualizada = await Permuta.findByIdAndUpdate(id, body, { returnDocument: 'after' });
 
         if (!permutaAtualizada) {
-            res.status(404).json({ error: "Permuta não encontrado." })
+            return res.status(404).json({ error: "Permuta não encontrada." });
         }
-        res.status(200).json(permutaAtualizada)
+
+        res.status(200).json(permutaAtualizada);
     } catch (error) {
-        res.status(500).json({ error: "Erro ao atualizar permuta." })
+        res.status(500).json({ error: "Erro ao atualizar permuta." });
     }
 };
 
 const excluirPermuta = async (req, res) => {
     try {
         const { id } = req.params;
-        const permutaDeletada = await Permuta.findByIdAndDelete(id)
+        const permutaDeletada = await Permuta.findByIdAndDelete(id);
 
-        if (!permutaDeletada){
-            return res.status(404).json({ error: "Permuta não encontrada." })
+        if (!permutaDeletada) {
+            return res.status(404).json({ error: "Permuta não encontrada." });
         }
 
-        res.status(200).json({ message: "Permuta deletada com sucesso!" })
+        res.status(200).json({ message: "Permuta deletada com sucesso!" });
     } catch (error) {
-        res.status(500).json({ error: "Erro ao deletar permuta." })
+        res.status(500).json({ error: "Erro ao deletar permuta." });
     }
 };
 
-export {buscarTodasPermutas, buscarPermutaID, criarPermuta, alterarPermuta, excluirPermuta};
+export { criarPermuta, buscarTodasPermutas, buscarPermutasUsuario, buscarPermutaID, alterarPermuta, excluirPermuta };

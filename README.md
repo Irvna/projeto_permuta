@@ -46,6 +46,7 @@ Associação de cidade atual e cidade desejada
 
 - Node.js
 - Express
+- JSON Web Tokens (JWT)
 - MongoDB
 - Mongoose
 - Insomnia
@@ -69,8 +70,9 @@ Associação de cidade atual e cidade desejada
    cd projeto_permuta
 
 ## 3. Instale as dependências
-   npm install express mongoose
+   npm install express mongoose jsonwebtoken
 
 ## 4. Inicie o servidor
    node server.js
+   
    npm run dev
