@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { criarServidor, loginServidor, buscarTodosServidores, buscarServidorID, alterarServidor, excluirServidor } from "./../controls/servidores.js";
+import { criarServidor, loginServidor, buscarTodosServidores, buscarServidorID, alterarServidor, excluirServidor } from "./../controllers/servidores.js";
 
 const router = Router();
 

@@ -4,14 +4,36 @@ const criarCidade = async (req, res) => {
     try {
         //cse array, permite criar varias cidades de uma só vez [{},{},{}]
         if (Array.isArray(req.body)) {
-            const cidades = await Cidade.insertMany(req.body);
-            return res.status(201).json({ message: "Cidades cadastradas com sucesso!" });
+            //ordered: false faz o Mongo tentar inserir todos os documentos,
+            //ignorando os que derem erro de duplicidade, em vez de parar no primeiro erro
+            try {
+                await Cidade.insertMany(req.body, { ordered: false });
+                return res.status(201).json({ message: "Cidades cadastradas com sucesso!" });
+            } catch (error) {
+                //insertMany com ordered:false lança um erro mesmo inserindo os válidos
+                if (error.code === 11000 || error.writeErrors) {
+                    const duplicadas = (error.writeErrors || [])
+                        .filter(e => e.code === 11000)
+                        .map(e => e.err?.op || e.op);
+
+                    return res.status(207).json({
+                        message: "Algumas cidades foram cadastradas, mas outras já existiam.",
+                        duplicadas
+                    });
+                }
+                throw error;
+            }
         }
 
         const novaCidade = new Cidade(req.body);
         await novaCidade.save();
         res.status(201).json({ message: "Cidade cadastrada com sucesso!" });
     } catch (error) {
+        if (error.code === 11000) {
+            return res.status(409).json({
+                error: "Já existe uma cidade cadastrada com esse nome nesse estado."
+            });
+        }
         res.status(500).json({ error: "Erro ao criar cidade." });
     }
 };

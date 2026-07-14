@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { criarCidade, buscarTodasCidades, buscarCidadeID, alterarCidade, excluirCidade } from "./../controls/cidades.js";
+import { criarCidade, buscarTodasCidades, buscarCidadeID, alterarCidade, excluirCidade } from "./../controllers/cidades.js";
 
 const router = Router();
 
