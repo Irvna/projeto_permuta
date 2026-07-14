@@ -62,25 +62,245 @@ Associação de cidade atual e cidade desejada
 
 ---
 
-# Instalação
+# Tutorial de Instalação e Execução do Projeto
 
-## 1. Configurando o Banco
-   Inicialize o MongoDB, crie uma conexão chamada "permutacao", no localhost/27017.
+Este documento apresenta o passo a passo necessário para configurar o ambiente, executar a aplicação e realizar testes.
 
-## 2. Clone o repositório
-   git clone https://github.com/Irvna/projeto_permuta.git
+---
 
-## 3. Acesse a pasta do projeto
-   cd projeto_permuta
+## 1. Pré-requisitos
 
-## 4. Instale as dependências
-   npm install express mongoose jsonwebtoken bcrypt dotenv
+Antes de iniciar, certifique-se de possuir os seguintes softwares instalados:
 
-## 5. Inicie o servidor
-   No terminal inicialize o servidor utilizando:
-      node server.js
-   ou
-      npm run dev
+- Git
+- Node.js (versão 18 ou superior)
+- MongoDB Community Server ou MongoDB Compass
+- Visual Studio Code (ou outra IDE)
+- Insomnia (para testes da API)
 
-## 6. Testes
-   Os testes podem ser realizados pelo Insomnia ao acessar http://localhost:3000
+---
+
+## 2. Clonar o repositório
+
+Abra o terminal e execute:
+
+   ```bash
+   git clone https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
+   ```
+
+Entre na pasta do projeto:
+
+   ```bash
+   cd NOME_DO_PROJETO
+   ```
+
+---
+
+## 3. Instalar as dependências
+
+Execute o comando:
+
+```bash
+npm install express mongoose jsonwebtoken bcrypt dotenv
+```
+
+## 4. Criar o banco de dados
+
+Abra o MongoDB Compass.
+
+Clique em **Create Database**.
+
+Preencha os seguintes campos:
+
+**Database Name**
+
+```text
+permutacao
+```
+
+**Collection Name**
+
+Pode ser qualquer nome, por exemplo:
+
+```text
+teste
+```
+
+Clique em **Create Database**.
+
+> Observação: As coleções Servidores, Cidades e Permutas serão criadas automaticamente pela aplicação quando os primeiros registros forem inseridos.
+
+---
+
+## 5. Criar o arquivo .env
+
+Na raiz do projeto, crie um arquivo chamado:
+
+```text
+.env
+```
+
+Dentro dele adicione:
+
+```env
+PORT=3000
+MONGO_URI=mongodb://localhost:27017/permutacao
+```
+
+---
+
+## 6. Iniciar a aplicação
+
+Execute:
+
+```bash
+npm run dev
+```
+
+Se tudo estiver correto, será exibida uma mensagem semelhante a:
+
+```text
+MongoDB conectado com sucesso.
+Servidor rodando na porta 3000.
+```
+
+---
+
+## 7. Testando a API
+
+Abra o Insomnia.
+
+Crie uma nova Collection chamada:
+
+```text
+Permutação API
+```
+
+Utilize a URL base:
+
+```text
+http://localhost:3000
+```
+
+---
+
+### Cidades
+
+#### Cadastrar cidade
+
+**POST**
+
+```http
+http://localhost:3000/cidades
+```
+
+Body (JSON): dados podem ser retirados de dados.json
+
+---
+
+#### Listar cidades
+
+**GET**
+
+```http
+http://localhost:3000/cidades
+```
+
+---
+
+#### Buscar cidade por ID (GET) || Atualizar cidade (PUT) || Excluir cidade (DELETE)
+
+```http
+http://localhost:3000/cidades/{id}
+```
+
+---
+
+### Servidores
+
+#### Cadastrar servidor
+
+**POST**
+
+```http
+http://localhost:3000/servidores
+```
+
+Body: dados podem ser retirados de dados.json
+
+---
+
+#### Listar servidores
+
+**GET**
+
+```http
+http://localhost:3000/servidores
+```
+
+---
+
+#### Buscar servidor por ID (GET) || Atualizar servidor (PUT) || Excluir servidor (DELETE)
+
+```http
+http://localhost:3000/servidores/{id}
+```
+
+---
+
+### Permutas
+
+#### Criar pedido de permuta
+
+**POST**
+
+```http
+http://localhost:3000/permutas
+```
+
+Body:
+
+```json
+{
+    "servidor1": "ID_DO_SERVIDOR",
+    "servidor2": "ID_DO_SERVIDOR",
+    "status": false
+}
+```
+
+---
+
+#### Listar permutas
+
+**GET**
+
+```http
+http://localhost:3000/permutas
+```
+
+---
+
+#### Buscar permuta por ID (GET) || Atualizar permuta (PUT) || Excluir permuta (DELETE)
+
+```http
+http://localhost:3000/permutas/{id}
+```
+
+---
+
+## 8. Encerrar a aplicação
+
+Para interromper a execução do servidor, pressione:
+
+```text
+CTRL + C
+```
+
+---
+
+# Observações
+
+- O banco de dados utilizado é o **MongoDB**.
+- O projeto utiliza **Express.js** como framework para a API REST.
+- O acesso ao banco de dados é realizado por meio do **Mongoose**.
+- As credenciais de conexão são armazenadas no arquivo `.env`, garantindo maior segurança e facilitando a configuração do ambiente.
