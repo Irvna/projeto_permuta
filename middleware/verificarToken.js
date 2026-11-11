@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 
-const SENHAJWT = 'chaveSecreta';
+const SENHAJWT = process.env.JWT_SECRET;
 
 const verificarToken = (req, res, next) => {
     const authHeader = req.headers['authorization'];
