@@ -4,12 +4,14 @@ import verificarToken from "../middleware/verificarToken.js";
 const criarPermuta = async (req, res) => {
     try {
         const servidor1 = req.usuario.id;
-        const { servidor2, cidadeTroca } = req.body;
+        const { servidor2, cidadeTroca, justificativa, observacoes } = req.body;
 
         const novaPermuta = new Permuta({
             servidor1,
             servidor2,
-            cidadeTroca
+            cidadeTroca,
+            justificativa,
+            observacoes
         });
 
         await novaPermuta.save();
@@ -21,12 +23,12 @@ const criarPermuta = async (req, res) => {
             }
         );
     } catch (error) {
-       res.status(500).json(
-            {
-                "erro": true,
-                "mensagem": "Erro ao criar permuta."
-            }
-       );
+        res.status(500).json(
+                {
+                    "erro": true,
+                    "mensagem": "Erro ao criar permuta."
+                }
+        );
     }
 };
 
