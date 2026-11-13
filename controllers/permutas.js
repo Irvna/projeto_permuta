@@ -1,5 +1,4 @@
 import Permuta from "./../models/permutas.js";
-import verificarToken from "../middleware/verificarToken.js";
 
 const criarPermuta = async (req, res) => {
     try {
@@ -34,10 +33,17 @@ const criarPermuta = async (req, res) => {
 
 const buscarTodasPermutas = async (req, res) => {
     try {
-        const permutas = await Permuta.find();
+        const permutas = await Permuta.find({
+            servidor1: { $ne: req.usuario.id },
+            $or: [
+                { status: "solicitada", servidor2: null },
+                { servidor2: req.usuario.id }
+            ]
+        }).populate("servidor1", "nome cargo cidadeAtual");
 
         res.status(200).json(permutas);
     } catch (error) {
+        console.error(error);
         res.status(500).json({ error: "Erro ao buscar permutas." });
     }
 };

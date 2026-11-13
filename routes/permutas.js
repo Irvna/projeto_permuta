@@ -6,7 +6,7 @@ const router = Router();
 
 router.post('/permutas', verificarToken, criarPermuta);
 
-router.get('/permutas', buscarTodasPermutas);
+router.get('/permutas', verificarToken, buscarTodasPermutas);
 
 router.get('/permutas/usuario', verificarToken, buscarPermutasUsuario);
 
