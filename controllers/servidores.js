@@ -2,7 +2,7 @@ import Servidor from "./../models/servidores.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
-const SENHAJWT = "chaveSecreta";
+const SENHAJWT = process.env.JWT_SECRET;
 const RANDOM_PASSWORD = 12;
 
 const criarServidor = async (req, res) => {

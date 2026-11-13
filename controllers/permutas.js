@@ -1,15 +1,16 @@
 import Permuta from "./../models/permutas.js";
-import verificarToken from "../middleware/verificarToken.js";
 
 const criarPermuta = async (req, res) => {
     try {
         const servidor1 = req.usuario.id;
-        const { servidor2, cidadeTroca } = req.body;
+        const { servidor2, cidadeTroca, justificativa, observacoes } = req.body;
 
         const novaPermuta = new Permuta({
             servidor1,
             servidor2,
-            cidadeTroca
+            cidadeTroca,
+            justificativa,
+            observacoes
         });
 
         await novaPermuta.save();
@@ -21,21 +22,28 @@ const criarPermuta = async (req, res) => {
             }
         );
     } catch (error) {
-       res.status(500).json(
-            {
-                "erro": true,
-                "mensagem": "Erro ao criar permuta."
-            }
-       );
+        res.status(500).json(
+                {
+                    "erro": true,
+                    "mensagem": "Erro ao criar permuta."
+                }
+        );
     }
 };
 
 const buscarTodasPermutas = async (req, res) => {
     try {
-        const permutas = await Permuta.find();
+        const permutas = await Permuta.find({
+            servidor1: { $ne: req.usuario.id },
+            $or: [
+                { status: "solicitada", servidor2: null },
+                { servidor2: req.usuario.id }
+            ]
+        }).populate("servidor1", "nome cargo cidadeAtual");
 
         res.status(200).json(permutas);
     } catch (error) {
+        console.error(error);
         res.status(500).json({ error: "Erro ao buscar permutas." });
     }
 };
